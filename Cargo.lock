@@ -142,6 +142,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "fugit"
+version = "0.3.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "17186ad64927d5ac8f02c1e77ccefa08ccd9eaa314d5a4772278aa204a22f7e7"
+dependencies = [
+ "gcd",
+]
+
+[[package]]
+name = "gcd"
+version = "2.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1d758ba1b47b00caf47f24925c0074ecb20d6dfcffe7f6d53395c0465674841a"
+
+[[package]]
 name = "half"
 version = "2.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -167,7 +182,28 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0bfb9eb618601c89945a70e254898da93b13be0388091d42117462b265bb3fad"
 dependencies = [
  "hash32",
+ "portable-atomic",
  "stable_deref_trait",
+]
+
+[[package]]
+name = "microbit-common"
+version = "0.15.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "365317da45a52eb2cfe9c23130520b69bd81a27922ff78c964de875137e9fa7b"
+dependencies = [
+ "embedded-hal 1.0.0",
+ "nrf52833-hal",
+ "tiny-led-matrix",
+]
+
+[[package]]
+name = "microbit-v2"
+version = "0.15.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6dbd4bb53d65a8b1a7e133d5d08673e17f39d940f485c2ff9c91350a0ff78958"
+dependencies = [
+ "microbit-common",
 ]
 
 [[package]]
@@ -195,7 +231,6 @@ dependencies = [
  "cfg-if",
  "cortex-m",
  "embedded-dma",
- "embedded-hal 0.2.7",
  "embedded-hal 1.0.0",
  "embedded-io",
  "embedded-storage",
@@ -239,12 +274,6 @@ dependencies = [
  "cortex-m-rt",
  "vcell",
 ]
-
-[[package]]
-name = "panic-halt"
-version = "1.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a513e167849a384b7f9b746e517604398518590a9142f4846a32e3c2a4de7b11"
 
 [[package]]
 name = "portable-atomic"
@@ -302,9 +331,11 @@ version = "0.1.0"
 dependencies = [
  "cortex-m",
  "cortex-m-rt",
- "nrf52833-hal",
- "nrf52833-pac",
- "panic-halt",
+ "critical-section",
+ "embedded-hal 1.0.0",
+ "fugit",
+ "heapless",
+ "microbit-v2",
  "rtt-target",
 ]
 
@@ -339,6 +370,12 @@ dependencies = [
  "quote",
  "unicode-ident",
 ]
+
+[[package]]
+name = "tiny-led-matrix"
+version = "1.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a718c727b686154a7c7913f70d7ebc8956f701cbab466bc22035cb27f378882b"
 
 [[package]]
 name = "typenum"
